@@ -34,19 +34,19 @@ async function request(path, options = {}) {
   return res.json();
 }
 
-export async function register(email, password) {
+export async function register(username, password) {
   const data = await request("/auth/register", {
     method: "POST",
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   });
   setToken(data.access_token);
   return data;
 }
 
-export async function login(email, password) {
+export async function login(username, password) {
   const data = await request("/auth/login", {
     method: "POST",
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   });
   setToken(data.access_token);
   return data;

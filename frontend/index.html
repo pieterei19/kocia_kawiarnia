@@ -19,7 +19,7 @@
     <p class="sub">Twoje kotki i serduszka czekają w chmurze.</p>
     <form id="authForm">
       <div class="auth-error" id="authError"></div>
-      <input class="auth-field" id="authEmail" type="email" placeholder="e-mail" autocomplete="username" required>
+      <input class="auth-field" id="authUsername" type="text" placeholder="nazwa użytkownika" autocomplete="username" minlength="3" maxlength="24" pattern="[a-zA-Z0-9_]+" required>
       <input class="auth-field" id="authPassword" type="password" placeholder="hasło (min. 6 znaków)" autocomplete="current-password" required>
       <button type="submit" class="auth-submit" id="authSubmitBtn">Zaloguj</button>
     </form>

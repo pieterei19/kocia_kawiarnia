@@ -41,11 +41,11 @@ def default_game_state(user_id: int) -> models.GameState:
 
 @api.post("/auth/register", response_model=schemas.TokenResponse)
 def register(payload: schemas.RegisterRequest, db: Session = Depends(get_db)):
-    existing = db.query(models.User).filter(models.User.email == payload.email).first()
+    existing = db.query(models.User).filter(models.User.username == payload.username).first()
     if existing:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Konto z tym adresem e-mail już istnieje.")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Ta nazwa użytkownika jest już zajęta.")
 
-    user = models.User(email=payload.email, password_hash=hash_password(payload.password))
+    user = models.User(username=payload.username, password_hash=hash_password(payload.password))
     db.add(user)
     db.flush()
 
@@ -59,9 +59,9 @@ def register(payload: schemas.RegisterRequest, db: Session = Depends(get_db)):
 
 @api.post("/auth/login", response_model=schemas.TokenResponse)
 def login(payload: schemas.LoginRequest, db: Session = Depends(get_db)):
-    user = db.query(models.User).filter(models.User.email == payload.email).first()
+    user = db.query(models.User).filter(models.User.username == payload.username).first()
     if not user or not verify_password(payload.password, user.password_hash):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Nieprawidłowy e-mail lub hasło.")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Nieprawidłowa nazwa użytkownika lub hasło.")
 
     token = create_access_token(user.id)
     return schemas.TokenResponse(access_token=token)

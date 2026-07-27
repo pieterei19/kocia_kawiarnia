@@ -3,7 +3,7 @@ import { login, register, getToken, clearToken } from "./api.js";
 export function initAuthScreen({ onAuthenticated }) {
   const screen = document.getElementById("authScreen");
   const form = document.getElementById("authForm");
-  const emailInput = document.getElementById("authEmail");
+  const usernameInput = document.getElementById("authUsername");
   const passwordInput = document.getElementById("authPassword");
   const errorBox = document.getElementById("authError");
   const submitBtn = document.getElementById("authSubmitBtn");
@@ -33,11 +33,11 @@ export function initAuthScreen({ onAuthenticated }) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorBox.textContent = "";
-    const email = emailInput.value.trim();
+    const username = usernameInput.value.trim();
     const password = passwordInput.value;
 
-    if (!email || password.length < 6) {
-      errorBox.textContent = "Podaj e-mail i hasło (min. 6 znaków).";
+    if (username.length < 3 || password.length < 6) {
+      errorBox.textContent = "Podaj nazwę użytkownika (min. 3 znaki) i hasło (min. 6 znaków).";
       return;
     }
 
@@ -45,9 +45,9 @@ export function initAuthScreen({ onAuthenticated }) {
     submitBtn.textContent = "Chwileczkę...";
     try {
       if (mode === "login") {
-        await login(email, password);
+        await login(username, password);
       } else {
-        await register(email, password);
+        await register(username, password);
       }
       screen.classList.remove("active");
       onAuthenticated();

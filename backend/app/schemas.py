@@ -1,14 +1,17 @@
 from typing import List
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
+
+
+USERNAME_PATTERN = r"^[a-zA-Z0-9_]+$"
 
 
 class RegisterRequest(BaseModel):
-    email: EmailStr
+    username: str = Field(min_length=3, max_length=24, pattern=USERNAME_PATTERN)
     password: str = Field(min_length=6, max_length=100)
 
 
 class LoginRequest(BaseModel):
-    email: EmailStr
+    username: str
     password: str
 
 
