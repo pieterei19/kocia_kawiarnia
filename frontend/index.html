@@ -21,7 +21,7 @@
       <div class="auth-error" id="authError"></div>
       <input class="auth-field" id="authUsername" type="text" placeholder="nazwa użytkownika" autocomplete="username" minlength="3" maxlength="24" pattern="[a-zA-Z0-9_]+" required>
       <input class="auth-field" id="authPassword" type="password" placeholder="hasło (min. 6 znaków)" autocomplete="current-password" required>
-      <button type="submit" class="auth-submit" id="authSubmitBtn">Zaloguj</button>
+      <button type="submit" class="auth-submit cat-btn" id="authSubmitBtn">Zaloguj</button>
     </form>
     <span class="auth-toggle" id="authModeToggle">Nie masz konta? Zarejestruj się</span>
   </div>
@@ -30,7 +30,7 @@
 <div class="app" id="appScreen">
   <div class="header-row">
     <h1>Kocia Kawiarnia</h1>
-    <button class="logout-btn" id="logoutBtn">wyloguj</button>
+    <button class="logout-btn cat-btn ears-light" id="logoutBtn">wyloguj</button>
   </div>
   <p class="sub">Głaszcz, zbieraj serduszka, urządzaj pokoik dla kotków.</p>
 
@@ -40,15 +40,18 @@
   </div>
 
   <div class="tabs">
-    <div class="tab active" data-tab="glaskanie">Głaskanie</div>
-    <div class="tab" data-tab="pokoj">Pokój</div>
-    <div class="tab" data-tab="sklep">Sklep</div>
+    <div class="tab cat-btn active" data-tab="glaskanie">Głaskanie</div>
+    <div class="tab cat-btn" data-tab="pokoj">Pokój</div>
+    <div class="tab cat-btn" data-tab="sklep">Sklep</div>
   </div>
 
   <div class="panel active" id="panel-glaskanie">
     <div class="stage">
-      <div class="cat-stage-3d" id="catStage">
-        <canvas id="catCanvas"></canvas>
+      <div class="cat-stage-2d" id="catStage">
+        <div class="plate">
+          <div class="cat-visual" id="catVisual"></div>
+        </div>
+        <div class="cup">☕</div>
       </div>
       <div class="float-hearts" id="floatWrap"></div>
       <div class="cat-name" id="catName">Miluś</div>
@@ -62,14 +65,14 @@
           <div class="upgrade-name">Miękka łapka</div>
           <div class="upgrade-info" id="clickUpgradeInfo"></div>
         </div>
-        <button class="upgrade-btn" id="clickUpgradeBtn">Ulepsz</button>
+        <button class="upgrade-btn cat-btn" id="clickUpgradeBtn">Ulepsz</button>
       </div>
       <div class="upgrade-row">
         <div>
           <div class="upgrade-name">Miska z karmą</div>
           <div class="upgrade-info" id="passiveUpgradeInfo"></div>
         </div>
-        <button class="upgrade-btn" id="passiveUpgradeBtn">Ulepsz</button>
+        <button class="upgrade-btn cat-btn" id="passiveUpgradeBtn">Ulepsz</button>
       </div>
     </div>
   </div>
@@ -77,7 +80,6 @@
   <div class="panel" id="panel-pokoj">
     <div class="section-title">Pokoik kotków</div>
     <div class="room" id="room">
-      <canvas id="roomCanvas"></canvas>
       <div class="room-empty-msg" id="roomEmptyMsg" style="display:none;">tu zamieszkają Twoje kotki</div>
     </div>
     <div class="section-title">Akcesoria do pokoju</div>
@@ -94,7 +96,7 @@
         <div class="mini-reel">🐾</div><div class="mini-reel">🐾</div><div class="mini-reel">🐾</div>
       </div>
       <div class="mini-odds">koszt 5 serduszek · trafienie <b>30%</b> · wygrana <b>x3</b></div>
-      <button class="mini-btn" id="miniBtn">Zakręć</button>
+      <button class="mini-btn cat-btn" id="miniBtn">Zakręć</button>
       <div class="mini-result" id="miniResult"></div>
       <div class="mini-locked" id="miniLocked" style="display:none;">Koniec zakrętów na dziś, wróć jutro 🐱</div>
     </div>

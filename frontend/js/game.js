@@ -1,9 +1,9 @@
 import { fetchState, saveState as apiSaveState } from "./api.js";
-import { createGlaskanieScene } from "./scene-glaskanie.js";
-import { createPokojScene } from "./scene-pokoj.js";
+import { createGlaskanieScene } from "./stage-glaskanie.js";
+import { createPokojScene } from "./stage-pokoj.js";
 
 const CATS = [
-  { id: "milus", name: "Miluś", emoji: "🐱", cost: 0 },
+  { id: "milus", name: "Lucjan", emoji: "🐈‍⬛", cost: 0 },
   { id: "czarny", name: "Sadza", emoji: "🐈‍⬛", cost: 40 },
   { id: "biały", name: "Śnieżek", emoji: "🐈", cost: 80 },
   { id: "tygrys", name: "Tygrysek", emoji: "🐅", cost: 150 },
@@ -84,9 +84,9 @@ export async function startGame({ onLogout }) {
     });
   });
 
-  /* --- 3D scenes --- */
-  const glaskanieScene = createGlaskanieScene(document.getElementById("catCanvas"));
-  const pokojScene = createPokojScene(document.getElementById("roomCanvas"));
+  /* --- sceny 2D --- */
+  const glaskanieScene = createGlaskanieScene(document.getElementById("catVisual"));
+  const pokojScene = createPokojScene(document.getElementById("room"));
 
   function renderAll() {
     document.getElementById("heartsNum").textContent = Math.floor(state.hearts);
@@ -111,7 +111,7 @@ export async function startGame({ onLogout }) {
     }
     emptyMsg.style.display = "none";
     pokojScene.setCats(state.owned_cats);
-    pokojScene.setDecos(state.owned_decos);
+    pokojScene.setDecos(state.owned_decos.map((id) => DECOS.find((d) => d.id === id)));
   }
 
   function renderGallery() {

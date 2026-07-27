@@ -1,4 +1,4 @@
-const CACHE_NAME = "kocia-kawiarnia-v1";
+const CACHE_NAME = "kocia-kawiarnia-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -8,10 +8,10 @@ const APP_SHELL = [
   "./js/api.js",
   "./js/auth-ui.js",
   "./js/game.js",
-  "./js/cat-model.js",
-  "./js/scene-glaskanie.js",
-  "./js/scene-pokoj.js",
-  "./lib/three/three.module.js",
+  "./js/cat-svg.js",
+  "./js/room-bg.js",
+  "./js/stage-glaskanie.js",
+  "./js/stage-pokoj.js",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
 ];
