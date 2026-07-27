@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>Kocia Kawiarnia</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#a85c2f">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-screen" id="authScreen">
+  <div class="auth-card">
+    <div class="auth-emoji">🐱</div>
+    <h2 id="authTitle">Zaloguj się</h2>
+    <p class="sub">Twoje kotki i serduszka czekają w chmurze.</p>
+    <form id="authForm">
+      <div class="auth-error" id="authError"></div>
+      <input class="auth-field" id="authEmail" type="email" placeholder="e-mail" autocomplete="username" required>
+      <input class="auth-field" id="authPassword" type="password" placeholder="hasło (min. 6 znaków)" autocomplete="current-password" required>
+      <button type="submit" class="auth-submit" id="authSubmitBtn">Zaloguj</button>
+    </form>
+    <span class="auth-toggle" id="authModeToggle">Nie masz konta? Zarejestruj się</span>
+  </div>
+</div>
+
+<div class="app" id="appScreen">
+  <div class="header-row">
+    <h1>Kocia Kawiarnia</h1>
+    <button class="logout-btn" id="logoutBtn">wyloguj</button>
+  </div>
+  <p class="sub">Głaszcz, zbieraj serduszka, urządzaj pokoik dla kotków.</p>
+
+  <div class="topbar">
+    <div class="pill"><div class="num" id="heartsNum">0</div><div class="lab">serduszka 🐾</div></div>
+    <div class="pill"><div class="num" id="catsOwnedNum">1</div><div class="lab">kotków</div></div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="glaskanie">Głaskanie</div>
+    <div class="tab" data-tab="pokoj">Pokój</div>
+    <div class="tab" data-tab="sklep">Sklep</div>
+  </div>
+
+  <div class="panel active" id="panel-glaskanie">
+    <div class="stage">
+      <div class="cat-stage-3d" id="catStage">
+        <canvas id="catCanvas"></canvas>
+      </div>
+      <div class="float-hearts" id="floatWrap"></div>
+      <div class="cat-name" id="catName">Miluś</div>
+      <div class="hint">dotknij kotka, żeby go pogłaskać</div>
+    </div>
+
+    <div class="section-title">Ulepszenia</div>
+    <div class="mini-card">
+      <div class="upgrade-row">
+        <div>
+          <div class="upgrade-name">Miękka łapka</div>
+          <div class="upgrade-info" id="clickUpgradeInfo"></div>
+        </div>
+        <button class="upgrade-btn" id="clickUpgradeBtn">Ulepsz</button>
+      </div>
+      <div class="upgrade-row">
+        <div>
+          <div class="upgrade-name">Miska z karmą</div>
+          <div class="upgrade-info" id="passiveUpgradeInfo"></div>
+        </div>
+        <button class="upgrade-btn" id="passiveUpgradeBtn">Ulepsz</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-pokoj">
+    <div class="section-title">Pokoik kotków</div>
+    <div class="room" id="room">
+      <canvas id="roomCanvas"></canvas>
+      <div class="room-empty-msg" id="roomEmptyMsg" style="display:none;">tu zamieszkają Twoje kotki</div>
+    </div>
+    <div class="section-title">Akcesoria do pokoju</div>
+    <div class="deco-row" id="decoRow"></div>
+  </div>
+
+  <div class="panel" id="panel-sklep">
+    <div class="section-title">Kotki do odblokowania</div>
+    <div class="gallery" id="gallery"></div>
+
+    <div class="mini-card">
+      <div class="mini-title">Kocie sloty (mały dodatek)</div>
+      <div class="mini-reels" id="miniReels">
+        <div class="mini-reel">🐾</div><div class="mini-reel">🐾</div><div class="mini-reel">🐾</div>
+      </div>
+      <div class="mini-odds">koszt 5 serduszek · trafienie <b>30%</b> · wygrana <b>x3</b></div>
+      <button class="mini-btn" id="miniBtn">Zakręć</button>
+      <div class="mini-result" id="miniResult"></div>
+      <div class="mini-locked" id="miniLocked" style="display:none;">Koniec zakrętów na dziś, wróć jutro 🐱</div>
+    </div>
+  </div>
+
+  <span style="display:block; text-align:center; margin-top:8px; font-size:12px; color:#b39a80; text-decoration:underline; cursor:pointer;" id="resetLink">Zresetuj wszystkie dane</span>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
